@@ -1,0 +1,12 @@
+/* Project theme. Regenerate from the references with:  python tools/make_theme.py projects/<name>
+   then fine-tune by looking at the reference contact sheets. */
+@font-face { font-family: BrandFont; src: url(assets/font.ttf); }
+:root {
+  --bg: #0E0E11; --bg2: #16161c; --fg: #FFFFFF; --muted: #9A9AA5;
+  --card: rgba(30,30,37,.78); --card-border: rgba(255,255,255,.12); --shadow: rgba(0,0,0,.45);
+  --highlight: #FFD60A; --danger: #FF3B30; --success: #30D158; --info: #3B82F6; --accent: #FF7A1A;
+  --on-highlight: #000; --on-danger: #fff; --on-success: #03210c; --on-info: #fff; --on-accent: #fff;
+  --weight: 800; --text-transform: none; --stroke: 0px; --grain: 0;
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect x='22' y='22' width='106' height='106' rx='30' fill='%23ffffff' fill-opacity='0.025'/%3E%3C/svg%3E");
+  --glow: rgba(59,130,246,.16);
+}

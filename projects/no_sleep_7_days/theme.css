@@ -1,0 +1,315 @@
+/* theme.css — Modern Type 3 Viral Cyber/Depth Style in 9:16 Vertical
+   Derived from Reference Videos: Infinite 3D Cyber Grid, Atmospheric Particles,
+   High-Contrast Neon Captions with Lime Active Highlight, Sleek Glassmorphic Cards. */
+
+@font-face {
+  font-family: BrandFont;
+  src: url(../../fonts/HindSiliguri-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: BrandFont;
+  src: url(../../fonts/HindSiliguri-Regular.ttf);
+  font-weight: 400;
+}
+
+:root {
+  --bg: #070B14;
+  --bg2: #0E1626;
+  --fg: #FFFFFF;
+  --muted: #94A3B8;
+  --card: rgba(15, 23, 42, 0.90);
+  --card-border: rgba(56, 189, 248, 0.35);
+  --shadow: rgba(0, 0, 0, 0.75);
+  --highlight: #E5B842;
+  --gold: #FFD255;
+  --cyan: #38BDF8;
+  --lime: #CCFF00;
+  --danger: #FF453A;
+  --success: #32D74B;
+  --info: #0EA5E9;
+  --accent: #F59E0B;
+  --font: BrandFont, 'Hind Siliguri', sans-serif;
+  --weight: 700;
+  --text-transform: none;
+  --letter: -0.5px;
+  --stroke: 0px;
+  --stroke-color: #000;
+  --grain: 0.03;
+  --vignette: rgba(3, 7, 18, 0.75);
+  --glow: rgba(56, 189, 248, 0.18);
+  --radius: 28px;
+}
+
+/* Background Atmosphere */
+#stage {
+  background: radial-gradient(ellipse 90% 70% at 50% 32%, #111D35 0%, #070D1A 55%, #03060B 100%) !important;
+}
+
+/* 3D Perspective Cyber Grid Floor (Replacing old spotlight beam!) */
+.stage-grid-floor {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  width: 140%;
+  height: 640px;
+  perspective: 420px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stage-grid-plane {
+  position: absolute;
+  inset: -100px 0 0 0;
+  transform-origin: 50% 100%;
+  transform: rotateX(65deg);
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.45) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.45) 2px, transparent 2px);
+  background-size: 75px 75px;
+  background-color: rgba(6, 16, 32, 0.5);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, transparent 100%);
+}
+
+.stage-horizon-glow {
+  position: absolute;
+  bottom: 540px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.5) 20%, rgba(56, 189, 248, 1) 50%, rgba(56, 189, 248, 0.5) 80%, transparent 100%);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.9), 0 0 50px rgba(56, 189, 248, 0.5);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Studio Venetian Gobo Slats Layer */
+.stage-gobo-shadows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1380px;
+  background: repeating-linear-gradient(135deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 45px, transparent 45px, transparent 95px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+}
+
+/* Ambient Radial Glow Aura */
+.stage-ambient-aura {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stage-ambient-aura.danger {
+  background: radial-gradient(circle, rgba(255, 69, 58, 0.22) 0%, rgba(255, 69, 58, 0.06) 50%, transparent 70%);
+}
+
+.stage-ambient-aura.purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(168, 85, 247, 0.06) 50%, transparent 70%);
+}
+
+.stage-ambient-aura.gold {
+  background: radial-gradient(circle, rgba(229, 184, 66, 0.22) 0%, rgba(229, 184, 66, 0.06) 50%, transparent 70%);
+}
+
+/* Ambient Floating Particles Container */
+.ambient-particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.ambient-mote {
+  position: absolute;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 10px #38BDF8;
+  opacity: 0.6;
+}
+
+/* Cards & Glassmorphism */
+.card-3d {
+  background: linear-gradient(165deg, rgba(20, 29, 44, 0.94) 0%, rgba(11, 17, 28, 0.96) 100%);
+  border: 2px solid rgba(56, 189, 248, 0.32);
+  border-radius: 32px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 35px rgba(56, 189, 248, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+}
+
+.card-danger {
+  border-color: rgba(255, 69, 58, 0.45) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 45px rgba(255, 69, 58, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+.card-gold {
+  border-color: rgba(229, 184, 66, 0.45) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 45px rgba(229, 184, 66, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+.card-purple {
+  border-color: rgba(168, 85, 247, 0.45) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 45px rgba(168, 85, 247, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Badges & Pills */
+.badge-cyan {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(14, 165, 233, 0.15) 100%);
+  color: #38BDF8;
+  border: 1.5px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+  font-weight: 800;
+}
+
+.badge-danger {
+  background: linear-gradient(135deg, rgba(255, 69, 58, 0.25) 0%, rgba(220, 38, 38, 0.15) 100%);
+  color: #FF453A;
+  border: 1.5px solid rgba(255, 69, 58, 0.5);
+  box-shadow: 0 0 20px rgba(255, 69, 58, 0.25);
+  font-weight: 800;
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, rgba(229, 184, 66, 0.25) 0%, rgba(245, 158, 11, 0.15) 100%);
+  color: #FFD255;
+  border: 1.5px solid rgba(229, 184, 66, 0.5);
+  box-shadow: 0 0 20px rgba(229, 184, 66, 0.25);
+  font-weight: 800;
+}
+
+/* Stickman Actor styling */
+.stick-actor {
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.35));
+}
+
+/* Viral Captions in vertical mode */
+body.vertical #cap {
+  left: 40px;
+  right: 40px;
+  top: 1440px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 64px;
+  line-height: 1.15;
+  color: #FFFFFF;
+  z-index: 85;
+}
+
+body.vertical #cap div {
+  background: rgba(10, 16, 28, 0.92);
+  border: 2px solid rgba(56, 189, 248, 0.38);
+  border-radius: 999px;
+  padding: 16px 48px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 25px rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+body.vertical #cap .kw-active {
+  background: #CCFF00 !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
+  border-radius: 12px !important;
+  padding: 2px 22px !important;
+  margin: 0 6px !important;
+  display: inline-block !important;
+  box-shadow: 0 0 30px rgba(204, 255, 0, 0.65) !important;
+  transform: scale(1.08) !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+body.vertical #cap .kw-word {
+  color: #FFFFFF;
+  -webkit-text-stroke: 0;
+}
+
+
+/* ==============================================================
+   KINETIC MOTION GRAPHICS TYPOGRAPHY (Derived from Reference Videos)
+   ============================================================== */
+.kinetic-big {
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.kinetic-huge {
+  font-size: 115px;
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.kinetic-sub {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.kinetic-lime {
+  color: #CCFF00 !important;
+  text-shadow: 0 0 35px rgba(204, 255, 0, 0.7) !important;
+}
+
+.kinetic-gold {
+  color: #FFD255 !important;
+  text-shadow: 0 0 35px rgba(255, 210, 85, 0.7) !important;
+}
+
+.kinetic-cyan {
+  color: #38BDF8 !important;
+  text-shadow: 0 0 35px rgba(56, 189, 248, 0.7) !important;
+}
+
+.kinetic-red {
+  color: #FF453A !important;
+  text-shadow: 0 0 35px rgba(255, 69, 58, 0.7) !important;
+}
+
+.kinetic-purple {
+  color: #C084FC !important;
+  text-shadow: 0 0 35px rgba(192, 132, 252, 0.7) !important;
+}
+
+.kinetic-glitch {
+  position: relative;
+  display: inline-block;
+  color: #FFF;
+  text-shadow: -3px 0 #00E5FF, 3px 0 #FF0055, 0 0 20px rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+}
+
+.sparkle-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px;
+  filter: drop-shadow(0 0 10px currentColor);
+}

@@ -1,0 +1,87 @@
+/* ============================================================
+   video-studio base styles. DO NOT put colours here — every colour,
+   font and texture comes from the project's theme.css (:root vars).
+   Generate a starting theme from the references:
+     python tools/make_theme.py projects/<name>
+   ============================================================ */
+/* shared fallback fonts from video-studio/fonts (downloaded by setup). Missing files are simply skipped. */
+@font-face { font-family: 'Hind Siliguri'; src: url(../fonts/HindSiliguri-Bold.ttf); }
+@font-face { font-family: 'Noto Sans'; src: url(../fonts/NotoSans.ttf); }
+@font-face { font-family: 'Montserrat'; src: url(../fonts/Montserrat.ttf); }
+:root {
+  /* defaults (overridden by theme.css) */
+  --bg: #0E0E11; --bg2: #16161c; --fg: #FFFFFF; --muted: #9A9AA5;
+  --card: rgba(30,30,37,.78); --card-border: rgba(255,255,255,.12); --shadow: rgba(0,0,0,.45);
+  --highlight: #FFD60A; --danger: #FF3B30; --success: #30D158; --info: #3B82F6; --accent: #FF7A1A;
+  --on-highlight: #000; --on-danger: #fff; --on-success: #03210c; --on-info: #fff; --on-accent: #fff;
+  --font: BrandFont, 'Hind Siliguri', 'Noto Sans', sans-serif; --weight: 800;
+  --text-transform: none; --letter: -1px;
+  --stroke: 0px; --stroke-color: #000;          /* set e.g. 12px for outlined "Shorts" text */
+  --pattern: none; --pattern-opacity: 1;         /* background texture (svg data-uri) */
+  --grain: 0;                                    /* 0..0.1 film grain */
+  --glow: rgba(59,130,246,.18);                  /* soft colour light behind content */
+  --radius: 30px; --vignette: rgba(0,0,0,.55);
+  /* aliases used by older scenes */
+  --red: var(--danger); --green: var(--success); --orange: var(--accent); --blue: var(--info); --gray: var(--muted);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+body { font-family: var(--font); font-weight: var(--weight); color: var(--fg); -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; inset: 0; overflow: hidden; background: var(--bg); }
+#bg { position: absolute; inset: -200px; background-image: var(--pattern); opacity: var(--pattern-opacity); transform: rotate(-8deg); }
+#glow { position: absolute; width: 140%; height: 90%; left: -20%; top: 10%; border-radius: 50%; background: radial-gradient(circle, var(--glow) 0%, transparent 60%); }
+#cam { position: absolute; inset: 0; transform-origin: 50% 45%; }
+#vig { position: absolute; inset: 0; z-index: 60; pointer-events: none; background: radial-gradient(ellipse 80% 70% at 50% 45%, transparent 45%, var(--vignette) 100%); }
+#grain { position: absolute; inset: -60px; z-index: 70; pointer-events: none; opacity: var(--grain); mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"); }
+#black { position: absolute; inset: 0; background: #000; z-index: 95; opacity: 0; }
+.scene { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+/* safe area: content lives inside .center / .zone. Vertical videos keep the bottom 20% free (platform buttons). */
+.center, .zone { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; padding: 80px 120px; }
+body.vertical .center, body.vertical .zone { padding: 170px 120px 400px 70px; }
+.row { display: flex; align-items: center; justify-content: center; gap: 40px; }
+.w { position: relative; }
+.abs { position: absolute; }
+
+/* text */
+.kline { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; column-gap: .24em; line-height: 1.25; text-align: center; }
+.kw { display: inline-block; }
+.T, .kline, .h0, .h1, .h2, .h3, .h4 { text-transform: var(--text-transform); letter-spacing: var(--letter); -webkit-text-stroke: var(--stroke) var(--stroke-color); paint-order: stroke fill; }
+.h0 { font-size: 260px; line-height: 1.05; } .h1 { font-size: 150px; } .h2 { font-size: 104px; } .h3 { font-size: 84px; } .h4 { font-size: 60px; }
+.p { font-size: 44px; color: var(--muted); -webkit-text-stroke: 0; }
+body.vertical .h0 { font-size: 200px; } body.vertical .h1 { font-size: 132px; } body.vertical .h2 { font-size: 104px; } body.vertical .h3 { font-size: 80px; } body.vertical .h4 { font-size: 58px; }
+.muted, .gray { color: var(--muted); } .hl, .y { } .highlight { color: var(--highlight); } .danger, .red { color: var(--danger); } .success, .green { color: var(--success); } .info, .blue { color: var(--info); } .accent, .orange { color: var(--accent); }
+
+/* components */
+.card { background: var(--card); border: 2px solid var(--card-border); border-radius: var(--radius); box-shadow: 0 30px 80px var(--shadow); }
+.win { overflow: hidden; }
+.win .bar { height: 54px; display: flex; align-items: center; gap: 12px; padding: 0 24px; border-bottom: 1.5px solid var(--card-border); }
+.win .bar i { width: 16px; height: 16px; border-radius: 50%; display: block; }
+.win .bar i:nth-child(1){background:#FF5F57}.win .bar i:nth-child(2){background:#FEBC2E}.win .bar i:nth-child(3){background:#28C840}
+.win .bar span { margin-left: 18px; font-size: 22px; color: var(--muted); }
+.pill { display: inline-block; padding: 10px 26px 6px; border-radius: 999px; font-size: 32px; letter-spacing: 1.5px; line-height: 1.35; text-transform: var(--text-transform); -webkit-text-stroke: 0; }
+.pill.hl, .pill.y { background: var(--highlight); color: var(--on-highlight); } .pill.danger, .pill.r { background: var(--danger); color: var(--on-danger); }
+.pill.success, .pill.g { background: var(--success); color: var(--on-success); } .pill.info, .pill.b { background: var(--info); color: var(--on-info); }
+.pill.accent, .pill.o { background: var(--accent); color: var(--on-accent); } .pill.k { background: var(--card); border: 2px solid var(--card-border); color: var(--fg); }
+.icard { display: inline-flex; align-items: center; justify-content: center; width: 1.25em; height: 1.25em; border-radius: .3em; background: var(--card); border: 1.5px solid var(--card-border); vertical-align: middle; box-shadow: 0 14px 40px var(--shadow); }
+.icard svg { width: 62%; height: 62%; }
+.strike { position: absolute; left: -3%; top: 54%; height: 12px; width: 106%; background: var(--danger); border-radius: 6px; transform-origin: left center; }
+.glowG { box-shadow: 0 0 0 4px var(--success), 0 0 60px color-mix(in srgb, var(--success) 40%, transparent) !important; }
+.stamp { display: inline-block; border: 10px solid currentColor; border-radius: 18px; padding: 16px 40px 10px; background: rgba(0,0,0,.25); text-transform: uppercase; letter-spacing: 2px; -webkit-text-stroke: 0; }
+.paper { background: #EEEBE4; color: #15161a; border-radius: 10px; box-shadow: 0 40px 90px rgba(0,0,0,.6); -webkit-text-stroke: 0; }
+.redact { height: 26px; background: #111; border-radius: 3px; margin: 14px 0; }
+.photo { background: #f2f0ea; padding: 18px 18px 64px; border-radius: 6px; box-shadow: 0 40px 100px rgba(0,0,0,.7); }
+.tape { position: absolute; width: 160px; height: 46px; background: rgba(255,226,140,.55); top: -20px; }
+.cursor { position: absolute; left: 0; top: 0; z-index: 50; transform-origin: 10px 6px; filter: drop-shadow(0 6px 10px rgba(0,0,0,.5)); }
+.caret { color: var(--info); }
+.logo { display: inline-flex; align-items: center; gap: .45em; }
+#logo { position: absolute; left: 60px; top: 48px; z-index: 55; font-size: 34px; opacity: .9; }
+
+/* captions */
+#cap { position: absolute; left: 120px; right: 120px; bottom: 60px; z-index: 80; text-align: center; font-size: 44px; line-height: 1.35;
+  text-transform: var(--text-transform); text-shadow: 0 3px 14px rgba(0,0,0,.9); }
+body.vertical #cap { left: 70px; right: 120px; bottom: auto; top: 1262px; height: 180px; display: flex; align-items: center; justify-content: center;
+  font-size: 72px; line-height: 1.05; -webkit-text-stroke: max(var(--stroke), 10px) var(--stroke-color); paint-order: stroke fill; text-shadow: none; }
+#cap span { display: inline-block; margin: 0 .12em; }
+.glowB { text-shadow: 0 0 60px var(--info); }

@@ -1,0 +1,81 @@
+{
+ "video": "references/ref_video.mp4",
+ "duration": 12.61,
+ "size": "720x1280",
+ "fps": "30/1",
+ "cuts": [],
+ "shot_lengths": [
+  12.61
+ ],
+ "avg_shot_seconds": 12.61,
+ "cuts_per_minute": 0.0,
+ "visual_beats": [
+  4.25,
+  7.25
+ ],
+ "avg_seconds_between_visual_changes": 4.2,
+ "accent_hex_percent": [
+  [
+   "#6A5531",
+   21.4
+  ],
+  [
+   "#987B38",
+   19.8
+  ],
+  [
+   "#7C6331",
+   15.9
+  ],
+  [
+   "#876C3A",
+   15.9
+  ],
+  [
+   "#AF903E",
+   15.9
+  ],
+  [
+   "#C4AA46",
+   11.1
+  ]
+ ],
+ "palette_hex_percent": [
+  [
+   "#1B2124",
+   18.0
+  ],
+  [
+   "#12181D",
+   13.8
+  ],
+  [
+   "#101519",
+   13.4
+  ],
+  [
+   "#0A0E12",
+   12.9
+  ],
+  [
+   "#161B1F",
+   12.6
+  ],
+  [
+   "#0D1317",
+   10.6
+  ],
+  [
+   "#4D4B42",
+   9.6
+  ],
+  [
+   "#060A0E",
+   9.1
+  ]
+ ],
+ "avg_brightness_0_255": 28,
+ "sheets": [
+  "sheet_0.jpg"
+ ]
+}

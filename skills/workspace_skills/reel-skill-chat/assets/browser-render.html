@@ -1,0 +1,189 @@
+<!doctype html>
+<!-- Free from @barakahraaz on Instagram. Not for sale. -->
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Make Your Video</title>
+<style>
+:root{--bg:#f6f5f2;--fg:#1d1c1a;--muted:#6b6862;--track:#e3e0da;--accent:#2f6d5b;--on-accent:#fff;--frame:#000}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151514;--fg:#f0eee9;--muted:#a3a09a;--track:#2c2b29;--accent:#5fb39a;--on-accent:#0d1f1a}}
+:root[data-theme="dark"]{--bg:#151514;--fg:#f0eee9;--muted:#a3a09a;--track:#2c2b29;--accent:#5fb39a;--on-accent:#0d1f1a}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px}
+main{width:100%;max-width:360px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+h1{font-size:22px;font-weight:650}
+#preview{width:min(100%,240px);aspect-ratio:9/16;background:var(--frame);border-radius:12px;display:block}
+.bar{width:100%;height:8px;border-radius:4px;background:var(--track);overflow:hidden}
+.bar>div{height:100%;width:0;background:var(--accent);transition:width .15s linear}
+#say,#note{min-height:1.45em}
+#note{color:var(--muted);font-size:14px}
+button{font:inherit;font-weight:600;padding:12px 28px;border:0;border-radius:10px;background:var(--accent);color:var(--on-accent);cursor:pointer}
+button[hidden]{display:none}
+button:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+#reel{position:fixed;left:-20000px;top:0;width:1080px;height:1920px;border:0;pointer-events:none}
+</style>
+</head><body>
+<main>
+<h1>Your video</h1>
+<canvas id="preview" width="1080" height="1920" aria-label="Video preview"></canvas>
+<div class="bar" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="fill"></div></div>
+<p id="say" aria-live="polite">Getting ready...</p>
+<p id="note"></p>
+<button id="dl" type="button" hidden>Download</button>
+</main>
+<iframe id="reel" title="Reel" aria-hidden="true" tabindex="-1"></iframe>
+<!-- fill-render.py puts the reel (index.html, base64, files inlined) and its sound (a data URL) here -->
+<script id="reel-src" type="text/plain">__REEL_HTML_B64__</script>
+<script id="reel-audio" type="text/plain">__REEL_AUDIO__</script>
+<script src="https://cdn.jsdelivr.net/npm/mp4-muxer@5.2.2/build/mp4-muxer.js"></script>
+<script>
+(async () => {
+  const W = 1080, H = 1920, FPS = 30;
+  const VIDEO_CODECS = ['avc1.640028', 'avc1.4d0028', 'avc1.42e028'];
+  const $ = id => document.getElementById(id);
+  const say = s => { $('say').textContent = s; };
+  const note = s => { $('note').textContent = s; };
+  const progress = k => { $('fill').style.width = (k * 100).toFixed(1) + '%'; $('fill').parentNode.setAttribute('aria-valuenow', Math.round(k * 100)); };
+  const bytes = b64 => Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const pause = ms => new Promise(r => setTimeout(r, ms));
+  // a yield that hidden tabs do not slow down (setTimeout waits 1 s or more there)
+  const tick = () => (window.scheduler && scheduler.yield) ? scheduler.yield()
+    : new Promise(r => { const c = new MessageChannel(); c.port1.onmessage = () => r(); c.port2.postMessage(0); });
+  const bytesOf = async url => {
+    try { return await (await fetch(url)).arrayBuffer(); }
+    catch (e) { return bytes(url.slice(url.indexOf(',') + 1)).buffer; }  // a page that may not fetch data URLs
+  };
+
+  // the Claude page hands over files through its own save dialog; elsewhere a plain link download
+  let saver = null;
+  try { if (window.claude && window.claude.use) window.claude.use('downloads').then(d => { saver = d; }, () => {}); } catch (e) {}
+
+  if (!('VideoEncoder' in window) || !('VideoFrame' in window)) {
+    say('This phone cannot make the video. Try a newer phone or a computer.');
+    return;
+  }
+  const reelB64 = $('reel-src').textContent.trim();
+  if (!reelB64 || reelB64.startsWith('__')) { say('There is no reel in this page yet.'); return; }
+
+  try {
+    // 1. load the reel in a frame and wait for window.ready (same contract as capture.mjs)
+    const frameEl = $('reel');
+    frameEl.srcdoc = new TextDecoder().decode(bytes(reelB64));
+    await new Promise(r => frameEl.addEventListener('load', r, { once: true }));
+    const win = frameEl.contentWindow, doc = frameEl.contentDocument;
+    for (let i = 0; win.ready !== true; i++) { if (i > 600) throw new Error('reel not ready after 30 s'); await pause(50); }
+    const dur = Number(win.DURATION) || 10, n = Math.round(dur * FPS);
+
+    // 2. pick a video codec this device can encode
+    let vcfg = null;
+    for (const codec of VIDEO_CODECS) {
+      const cfg = { codec, width: W, height: H, bitrate: 8e6, framerate: FPS, avc: { format: 'avc' } };
+      try { if ((await VideoEncoder.isConfigSupported(cfg)).supported) { vcfg = cfg; break; } } catch (e) {}
+    }
+    if (!vcfg) { say('This phone cannot make the video. Try a newer phone or a computer.'); return; }
+
+    // 3. the sound: already mixed in the chat (mix.py), decoded here, encoded as AAC when the device can
+    let pcm = null, acfg = null;
+    const audioUrl = $('reel-audio').textContent.trim();
+    if (audioUrl.startsWith('data:')) {
+      const buf = await bytesOf(audioUrl);
+      pcm = await new OfflineAudioContext(2, 48000, 48000).decodeAudioData(buf);
+      const cfg = { codec: 'mp4a.40.2', sampleRate: pcm.sampleRate, numberOfChannels: Math.min(2, pcm.numberOfChannels), bitrate: 192000 };
+      try { if ('AudioEncoder' in window && (await AudioEncoder.isConfigSupported(cfg)).supported) acfg = cfg; } catch (e) {}
+      if (!acfg) note('This phone cannot add the sound, so the video will be silent.');
+    } else {
+      note('This video has no sound.');
+    }
+
+    const target = new Mp4Muxer.ArrayBufferTarget();
+    const muxer = new Mp4Muxer.Muxer({
+      target, fastStart: 'in-memory', firstTimestampBehavior: 'offset',
+      video: { codec: 'avc', width: W, height: H, frameRate: FPS },
+      audio: acfg ? { codec: 'aac', numberOfChannels: acfg.numberOfChannels, sampleRate: acfg.sampleRate } : undefined,
+    });
+    let failed = null, wake = null;
+    const onError = e => { failed = failed || e; if (wake) wake(); };
+
+    if (acfg) {
+      const aenc = new AudioEncoder({ output: (c, m) => muxer.addAudioChunk(c, m), error: onError });
+      aenc.configure(acfg);
+      const sr = acfg.sampleRate, ch = acfg.numberOfChannels, total = Math.min(pcm.length, Math.round(dur * sr)), step = 4800;
+      const chans = Array.from({ length: ch }, (_, c) => pcm.getChannelData(c));
+      for (let i = 0; i < total; i += step) {
+        const len = Math.min(step, total - i), data = new Float32Array(len * ch);
+        chans.forEach((d, c) => data.set(d.subarray(i, i + len), c * len));
+        const ad = new AudioData({ format: 'f32-planar', sampleRate: sr, numberOfFrames: len, numberOfChannels: ch, timestamp: Math.round(i / sr * 1e6), data });
+        aenc.encode(ad); ad.close();
+      }
+      await aenc.flush(); aenc.close();
+    }
+
+    // 4. draw each frame: a canvas reel is copied straight; any other reel is drawn from its page (SVG foreignObject)
+    const out = $('preview'), ctx = out.getContext('2d');
+    const kids = [...doc.body.children].filter(e => e.tagName !== 'SCRIPT' && win.getComputedStyle(e).display !== 'none');
+    const solo = kids.length === 1 && kids[0].tagName === 'CANVAS' && kids[0].width === W && kids[0].height === H ? kids[0] : null;
+    const KEEP = ['position', 'left', 'top', 'right', 'bottom', 'width', 'height', 'transform', 'transform-origin', 'opacity', 'z-index', 'display', 'filter', 'mix-blend-mode', 'border-radius', 'margin'];
+    const snapPage = async () => {
+      const clone = doc.documentElement.cloneNode(true);
+      clone.querySelectorAll('script').forEach(s => s.remove());
+      const live = doc.querySelectorAll('canvas'), copies = clone.querySelectorAll('canvas');
+      live.forEach((c, i) => {
+        const img = doc.createElement('img'), cs = win.getComputedStyle(c);
+        img.src = c.toDataURL();
+        img.setAttribute('style', KEEP.map(p => `${p}:${cs.getPropertyValue(p)}`).join(';'));
+        copies[i].replaceWith(img);
+      });
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><foreignObject x="0" y="0" width="${W}" height="${H}">${new XMLSerializer().serializeToString(clone)}</foreignObject></svg>`;
+      const img = new Image();
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      await img.decode();
+      ctx.clearRect(0, 0, W, H);
+      ctx.drawImage(img, 0, 0, W, H);
+    };
+
+    const venc = new VideoEncoder({ output: (c, m) => muxer.addVideoChunk(c, m), error: onError });
+    venc.configure(vcfg);
+    say('Making your video. Keep this page open.');
+    for (let f = 0; f < n; f++) {
+      if (failed) throw failed;
+      win.frame(f / FPS);
+      if (solo) { ctx.drawImage(solo, 0, 0); } else await snapPage();
+      const vf = new VideoFrame(out, { timestamp: Math.round(f * 1e6 / FPS), duration: Math.round(1e6 / FPS) });
+      venc.encode(vf, { keyFrame: f % 60 === 0 }); vf.close();
+      while (venc.encodeQueueSize > 6 && !failed) {
+        if ('ondequeue' in venc) await new Promise(r => { wake = r; venc.addEventListener('dequeue', r, { once: true }); });
+        else await tick();
+      }
+      progress((f + 1) / n);
+      if (f % 3 === 0) { say(`Making your video. Frame ${f + 1} of ${n}.`); await tick(); }
+    }
+    await venc.flush(); venc.close();
+    if (failed) throw failed;
+    muxer.finalize();
+    const blob = new Blob([target.buffer], { type: 'video/mp4' });
+    window.reelMp4 = blob;  // for checks: the finished file
+    say('Your video is ready.');
+
+    const dl = $('dl');
+    dl.hidden = false;
+    dl.focus();
+    dl.addEventListener('click', async () => {
+      note('');
+      if (saver) {
+        try { await saver.save({ filename: 'reel.mp4', data: blob }); say('Saved.'); return; }
+        catch (e) { if (e && e.code === 'declined') return; }
+      }
+      // inside a Claude page a plain link cannot save, so say so; the link below still tries
+      if (saver || window.claude) note('Could not save here. Open this page on a computer.');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'reel.mp4';
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+  } catch (e) {
+    console.error(e);
+    window.reelError = String(e && e.message || e);
+    say('Something went wrong. Reload the page to try again. If it fails again, try a computer.');
+  }
+})();
+</script>
+</body></html>

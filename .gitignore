@@ -1,0 +1,9 @@
+*.mp4
+*.wav
+*.tar.gz
+*.zip
+node_modules/
+__pycache__/
+.cache/
+*.log
+.github_token

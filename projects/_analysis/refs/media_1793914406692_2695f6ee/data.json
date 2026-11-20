@@ -1,0 +1,100 @@
+{
+ "video": "C:\\Users\\infinix\\.gemini\\antigravity\\brain\\ebd32543-fc67-4e65-b663-7a8861b5eaec\\.user_uploaded\\media_1793914406692_2695f6ee.mp4",
+ "duration": 87.96,
+ "size": "720x1280",
+ "fps": "30/1",
+ "cuts": [],
+ "shot_lengths": [
+  87.96
+ ],
+ "avg_shot_seconds": 87.96,
+ "cuts_per_minute": 0.0,
+ "visual_beats": [
+  0.25,
+  8.0,
+  16.25,
+  16.75,
+  25.75,
+  26.25,
+  35.25,
+  43.25,
+  43.75,
+  54.25,
+  54.75,
+  63.25,
+  70.75,
+  71.25,
+  82.0,
+  82.5
+ ],
+ "avg_seconds_between_visual_changes": 5.17,
+ "accent_hex_percent": [
+  [
+   "#6A91D2",
+   29.9
+  ],
+  [
+   "#7E2A7E",
+   21.5
+  ],
+  [
+   "#89A9DF",
+   18.4
+  ],
+  [
+   "#2663D5",
+   16.9
+  ],
+  [
+   "#617ABD",
+   7.7
+  ],
+  [
+   "#7C9ED2",
+   5.6
+  ]
+ ],
+ "palette_hex_percent": [
+  [
+   "#F6F5F9",
+   17.3
+  ],
+  [
+   "#DCD4F0",
+   13.1
+  ],
+  [
+   "#E2E6F6",
+   12.5
+  ],
+  [
+   "#C0C3EC",
+   12.2
+  ],
+  [
+   "#312C48",
+   11.4
+  ],
+  [
+   "#FCFCFC",
+   11.3
+  ],
+  [
+   "#808AC0",
+   11.2
+  ],
+  [
+   "#EFEFF8",
+   11.0
+  ]
+ ],
+ "avg_brightness_0_255": 198,
+ "sheets": [
+  "sheet_0.jpg",
+  "sheet_1.jpg",
+  "sheet_2.jpg",
+  "sheet_3.jpg",
+  "sheet_4.jpg",
+  "sheet_5.jpg"
+ ]
+}
