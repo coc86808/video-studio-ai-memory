@@ -41,3 +41,12 @@ When authoring or modifying video projects in this workspace, follow these invar
 - **Hook Scoring & Pacing Validation**: Run `hookscore.py` on script hooks and `pacing_check.py` on rendered media to prevent sub-0.3s visual flashes and ensure proper word-per-second pacing.
 - **Sound Sync Precision**: SFX events (from `new skill and information/engine/sfx/` or procedural DSP) must land exactly on the frame of visual change or 1–2 frames after, never before.
 
+## 8. GitHub Continuous Memory & Skills Synchronization (Mandatory)
+- **Automatic Memory Backup**: Whenever a task, video production, skill creation, script edit, or major work milestone is completed, ALWAYS execute:
+  ```bash
+  python tools/git_sync.py "<Brief summary of work done>"
+  ```
+- **Live Memory Repository**: Pushes to `https://github.com/coc86808/video-studio-ai-memory.git` (authenticated via `.github_token`).
+- **Scope**: Synchronizes all workspace skills (`.agents/skills/`), global configuration skills (`config/skills/`), built-in platform skills, context documents (`AGENTS.md`, `VIDEO_TYPES.md`, `REEL_STUDIO_GUIDE.md`), studio engines/tools, project source code, and appends the entry to `MEMORY_LEDGER.md`.
+
+
