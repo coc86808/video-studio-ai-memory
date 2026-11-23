@@ -21,6 +21,8 @@ Example: `example/` = **THE GIRL WHO WAS MAILED TO GRANDMA** (1914; 52 s, 21 sho
   `plop`, `boing`, `stamp`, `ding`, `chirp`, `chug`, `whoosh` on cuts.
 - True stories only, checked against good sources (museums, encyclopaedias, major outlets) and listed in `script.json`
   "sources". If sources disagree on a number, use the one most of them give and keep the wording simple.
+- **Landmarks & Locations in 3D**: When a specific place, city, or landmark is named (e.g. Eiffel Tower, Paris street, luxury hotel), stage a clear, prominent 3D view with wide establishing angles or cinematic camera moves so the audience clearly sees and explores the 3D architecture.
+- **Text & Overlay Contrast**: All 2D text banners, rank odometers, and stamps must have high-contrast solid backgrounds with proper padding and clean borders so they never blend into 3D geometry and stay perfectly legible.
 
 ## 2. Engine map (`example/src/`)
 | file | gives you |
