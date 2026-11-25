@@ -1,0 +1,224 @@
+/* theme.css — Type 3: Cinematic Stickman 2.5D Explainer
+   For "When GS, JS, R&D, IT, PR, and Office Leave Your Club"
+   Theatrical Spotlight Staging, Deep Slate (#0C1014), Crisis Crimson (#FF453A) -> Antique Gold (#E5B842) */
+
+@font-face {
+  font-family: BrandFont;
+  src: url(../../fonts/HindSiliguri-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: BrandFont;
+  src: url(../../fonts/HindSiliguri-Regular.ttf);
+  font-weight: 400;
+}
+
+:root {
+  --bg: #0C1014;
+  --bg2: #141A22;
+  --fg: #FFFFFF;
+  --muted: #94A3B8;
+  --card: rgba(20, 27, 36, 0.92);
+  --card-border: rgba(229, 184, 66, 0.32);
+  --shadow: rgba(0, 0, 0, 0.75);
+  --highlight: #E5B842;
+  --gold: #FFD255;
+  --danger: #FF453A;
+  --success: #32D74B;
+  --info: #38BDF8;
+  --accent: #F59E0B;
+  --font: BrandFont, 'Hind Siliguri', sans-serif;
+  --weight: 700;
+  --radius: 28px;
+}
+
+#stage {
+  background: radial-gradient(circle at 50% 28%, #16202C 0%, #0C1014 62%, #050709 100%) !important;
+}
+
+#bg {
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 1200px;
+  height: 2040px;
+  pointer-events: none;
+}
+
+body.vertical .center {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  width: 1080px;
+  height: 1160px;
+  padding: 30px 60px 10px 60px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-evenly !important;
+  gap: 20px !important;
+}
+
+.spotlight-beam {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 920px;
+  height: 1350px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(229, 184, 66, 0.22) 0%, rgba(229, 184, 66, 0.06) 55%, transparent 80%);
+  clip-path: polygon(34% 0%, 66% 0%, 98% 100%, 2% 100%);
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.spotlight-beam.crisis {
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 69, 58, 0.22) 0%, rgba(255, 69, 58, 0.06) 55%, transparent 80%);
+}
+
+.stage-floor {
+  position: absolute;
+  top: 1280px;
+  left: 6%;
+  width: 88%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, rgba(229, 184, 66, 0.6) 25%, #FFFFFF 50%, rgba(229, 184, 66, 0.6) 75%, transparent 100%);
+  box-shadow: 0 0 28px rgba(229, 184, 66, 0.6), 0 0 60px rgba(229, 184, 66, 0.3);
+  z-index: 3;
+}
+
+.stage-floor.crisis {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 69, 58, 0.6) 25%, #FFFFFF 50%, rgba(255, 69, 58, 0.6) 75%, transparent 100%);
+  box-shadow: 0 0 28px rgba(255, 69, 58, 0.6), 0 0 60px rgba(255, 69, 58, 0.3);
+}
+
+.stage-reflection {
+  position: absolute;
+  top: 1285px;
+  left: 12%;
+  width: 76%;
+  height: 90px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(229, 184, 66, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 3D Glassmorphic Cards & Widgets */
+.card-3d {
+  background: linear-gradient(165deg, rgba(26, 35, 48, 0.94) 0%, rgba(14, 19, 27, 0.96) 100%);
+  border: 2px solid rgba(229, 184, 66, 0.35);
+  border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, #FFDF70 0%, #E5B842 60%, #B88A20 100%);
+  color: #1A1300;
+  font-weight: 800;
+  box-shadow: 0 8px 25px rgba(229, 184, 66, 0.4);
+}
+
+.badge-red {
+  background: linear-gradient(135deg, #FF6B6B 0%, #E63946 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+}
+
+.badge-green {
+  background: linear-gradient(135deg, #52B788 0%, #2D6A4F 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  box-shadow: 0 8px 25px rgba(82, 183, 136, 0.4);
+}
+
+.kinetic-big {
+  font-size: 76px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.kinetic-sub {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.text-gold {
+  color: #FFD255;
+  text-shadow: 0 0 30px rgba(229, 184, 66, 0.7);
+}
+
+.text-danger {
+  color: #FF5A5A;
+  text-shadow: 0 0 30px rgba(255, 69, 58, 0.7);
+}
+
+.text-green {
+  color: #38EF7D;
+  text-shadow: 0 0 30px rgba(56, 239, 125, 0.7);
+}
+
+.text-cyan {
+  color: #38BDF8;
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
+}
+
+/* Captions container in vertical mode */
+body.vertical #cap {
+  left: 50px;
+  right: 50px;
+  top: 1420px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 64px;
+  line-height: 1.15;
+  color: #FFFFFF;
+  z-index: 90;
+}
+
+body.vertical #cap div {
+  background: rgba(14, 19, 26, 0.94);
+  border: 2px solid rgba(229, 184, 66, 0.45);
+  border-radius: 999px;
+  padding: 16px 48px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(229, 184, 66, 0.25);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+body.vertical #cap .kw-active {
+  background: #E5B842 !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
+  border-radius: 12px !important;
+  padding: 2px 22px !important;
+  margin: 0 6px !important;
+  display: inline-block !important;
+  box-shadow: 0 0 30px rgba(229, 184, 66, 0.75) !important;
+  transform: scale(1.08) !important;
+  -webkit-text-stroke: 0px transparent !important;
+  paint-order: normal !important;
+}
+
+body.vertical #cap .kw-word {
+  color: #FFFFFF;
+  -webkit-text-stroke: 0px transparent !important;
+  paint-order: normal !important;
+}
+
+.stick-actor {
+  filter: drop-shadow(0 0 16px rgba(229, 184, 66, 0.35));
+}

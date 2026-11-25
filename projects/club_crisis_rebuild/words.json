@@ -1,0 +1,944 @@
+{
+"language_code": "en",
+"segments": [
+{
+"words": [
+{
+"text": "You",
+"start_time": 0.05,
+"end_time": 0.51
+},
+{
+"text": "lost",
+"start_time": 0.51,
+"end_time": 0.73
+},
+{
+"text": "six",
+"start_time": 0.73,
+"end_time": 1.01
+},
+{
+"text": "club",
+"start_time": 1.01,
+"end_time": 1.25
+},
+{
+"text": "departments",
+"start_time": 1.25,
+"end_time": 1.83
+},
+{
+"text": "overnight",
+"start_time": 1.83,
+"end_time": 2.25
+},
+{
+"text": "with",
+"start_time": 2.25,
+"end_time": 2.51
+},
+{
+"text": "zero",
+"start_time": 2.51,
+"end_time": 2.83
+},
+{
+"text": "replacements",
+"start_time": 2.83,
+"end_time": 3.41
+},
+{
+"text": "left.",
+"start_time": 3.41,
+"end_time": 3.75
+},
+{
+"text": "Your",
+"start_time": 4.37,
+"end_time": 4.49
+},
+{
+"text": "GS,",
+"start_time": 4.49,
+"end_time": 5.0
+},
+{
+"text": "JS,",
+"start_time": 5.0,
+"end_time": 5.51
+},
+{
+"text": "R&D,",
+"start_time": 5.75,
+"end_time": 6.39
+},
+{
+"text": "IT,",
+"start_time": 6.63,
+"end_time": 6.95
+},
+{
+"text": "PR,",
+"start_time": 7.29,
+"end_time": 7.61
+},
+{
+"text": "and",
+"start_time": 7.81,
+"end_time": 7.85
+},
+{
+"text": "office",
+"start_time": 7.85,
+"end_time": 8.17
+},
+{
+"text": "team",
+"start_time": 8.17,
+"end_time": 8.51
+},
+{
+"text": "just",
+"start_time": 8.51,
+"end_time": 8.77
+},
+{
+"text": "walked",
+"start_time": 8.77,
+"end_time": 9.05
+},
+{
+"text": "out",
+"start_time": 9.05,
+"end_time": 9.35
+},
+{
+"text": "and",
+"start_time": 9.35,
+"end_time": 9.53
+},
+{
+"text": "the",
+"start_time": 9.53,
+"end_time": 9.65
+},
+{
+"text": "remaining",
+"start_time": 9.65,
+"end_time": 9.99
+},
+{
+"text": "members",
+"start_time": 9.99,
+"end_time": 10.45
+},
+{
+"text": "aren't",
+"start_time": 10.45,
+"end_time": 10.75
+},
+{
+"text": "productive",
+"start_time": 10.75,
+"end_time": 11.15
+},
+{
+"text": "enough",
+"start_time": 11.15,
+"end_time": 11.45
+},
+{
+"text": "to",
+"start_time": 11.45,
+"end_time": 11.63
+},
+{
+"text": "step",
+"start_time": 11.63,
+"end_time": 11.85
+},
+{
+"text": "up.",
+"start_time": 11.85,
+"end_time": 12.07
+},
+{
+"text": "Do",
+"start_time": 12.67,
+"end_time": 12.81
+},
+{
+"text": "not",
+"start_time": 12.81,
+"end_time": 12.99
+},
+{
+"text": "panic",
+"start_time": 12.99,
+"end_time": 13.31
+},
+{
+"text": "and",
+"start_time": 13.31,
+"end_time": 13.49
+},
+{
+"text": "try",
+"start_time": 13.49,
+"end_time": 13.69
+},
+{
+"text": "to",
+"start_time": 13.69,
+"end_time": 13.83
+},
+{
+"text": "fill",
+"start_time": 13.83,
+"end_time": 13.99
+},
+{
+"text": "six",
+"start_time": 13.99,
+"end_time": 14.31
+},
+{
+"text": "empty",
+"start_time": 14.31,
+"end_time": 14.59
+},
+{
+"text": "chairs",
+"start_time": 14.59,
+"end_time": 14.97
+},
+{
+"text": "with",
+"start_time": 14.97,
+"end_time": 15.21
+},
+{
+"text": "warm",
+"start_time": 15.21,
+"end_time": 15.55
+},
+{
+"text": "bodies.",
+"start_time": 15.55,
+"end_time": 16.01
+},
+{
+"text": "That",
+"start_time": 16.55,
+"end_time": 16.77
+},
+{
+"text": "kills",
+"start_time": 16.77,
+"end_time": 17.09
+},
+{
+"text": "your",
+"start_time": 17.09,
+"end_time": 17.29
+},
+{
+"text": "club.",
+"start_time": 17.29,
+"end_time": 17.59
+},
+{
+"text": "Instead,",
+"start_time": 18.15,
+"end_time": 18.53
+},
+{
+"text": "run",
+"start_time": 18.85,
+"end_time": 19.01
+},
+{
+"text": "this",
+"start_time": 19.01,
+"end_time": 19.27
+},
+{
+"text": "four",
+"start_time": 19.27,
+"end_time": 19.53
+},
+{
+"text": "-step",
+"start_time": 19.53,
+"end_time": 19.77
+},
+{
+"text": "emergency",
+"start_time": 19.77,
+"end_time": 20.41
+},
+{
+"text": "rebuild",
+"start_time": 20.41,
+"end_time": 20.79
+},
+{
+"text": "protocol.",
+"start_time": 20.79,
+"end_time": 21.41
+},
+{
+"text": "Step",
+"start_time": 22.13,
+"end_time": 22.25
+},
+{
+"text": "one,",
+"start_time": 22.25,
+"end_time": 22.65
+},
+{
+"text": "freeze",
+"start_time": 23.21,
+"end_time": 23.37
+},
+{
+"text": "all",
+"start_time": 23.37,
+"end_time": 23.79
+},
+{
+"text": "non",
+"start_time": 23.79,
+"end_time": 24.09
+},
+{
+"text": "-essential",
+"start_time": 24.09,
+"end_time": 24.39
+},
+{
+"text": "ops.",
+"start_time": 24.39,
+"end_time": 24.97
+},
+{
+"text": "Cancel",
+"start_time": 24.97,
+"end_time": 26.29
+},
+{
+"text": "side",
+"start_time": 26.29,
+"end_time": 26.63
+},
+{
+"text": "projects",
+"start_time": 26.63,
+"end_time": 27.13
+},
+{
+"text": "for",
+"start_time": 27.13,
+"end_time": 27.35
+},
+{
+"text": "30",
+"start_time": 27.35,
+"end_time": 27.65
+},
+{
+"text": "days",
+"start_time": 27.65,
+"end_time": 27.99
+},
+{
+"text": "and",
+"start_time": 27.99,
+"end_time": 28.21
+},
+{
+"text": "protect",
+"start_time": 28.21,
+"end_time": 28.49
+},
+{
+"text": "only",
+"start_time": 28.49,
+"end_time": 28.87
+},
+{
+"text": "one",
+"start_time": 28.87,
+"end_time": 29.13
+},
+{
+"text": "flagship",
+"start_time": 29.13,
+"end_time": 29.55
+},
+{
+"text": "event",
+"start_time": 29.55,
+"end_time": 29.97
+},
+{
+"text": "so",
+"start_time": 29.97,
+"end_time": 30.17
+},
+{
+"text": "your",
+"start_time": 30.17,
+"end_time": 30.31
+},
+{
+"text": "skeleton",
+"start_time": 30.31,
+"end_time": 30.65
+},
+{
+"text": "crew",
+"start_time": 30.65,
+"end_time": 31.05
+},
+{
+"text": "stops",
+"start_time": 31.05,
+"end_time": 31.41
+},
+{
+"text": "bleeding",
+"start_time": 31.41,
+"end_time": 31.75
+},
+{
+"text": "energy.",
+"start_time": 31.75,
+"end_time": 32.25
+},
+{
+"text": "Step",
+"start_time": 32.75,
+"end_time": 33.07
+},
+{
+"text": "two,",
+"start_time": 33.07,
+"end_time": 33.43
+},
+{
+"text": "merge",
+"start_time": 33.85,
+"end_time": 34.09
+},
+{
+"text": "six",
+"start_time": 34.09,
+"end_time": 34.39
+},
+{
+"text": "roles",
+"start_time": 34.39,
+"end_time": 34.79
+},
+{
+"text": "into",
+"start_time": 34.79,
+"end_time": 35.01
+},
+{
+"text": "two",
+"start_time": 35.01,
+"end_time": 35.27
+},
+{
+"text": "core",
+"start_time": 35.27,
+"end_time": 35.55
+},
+{
+"text": "hubs.",
+"start_time": 35.55,
+"end_time": 35.93
+},
+{
+"text": "Combine",
+"start_time": 36.33,
+"end_time": 36.89
+},
+{
+"text": "GS,",
+"start_time": 36.89,
+"end_time": 37.38
+},
+{
+"text": "JS,",
+"start_time": 37.38,
+"end_time": 37.87
+},
+{
+"text": "and",
+"start_time": 37.87,
+"end_time": 38.05
+},
+{
+"text": "office",
+"start_time": 38.05,
+"end_time": 38.37
+},
+{
+"text": "into",
+"start_time": 38.37,
+"end_time": 38.63
+},
+{
+"text": "one",
+"start_time": 38.63,
+"end_time": 38.89
+},
+{
+"text": "operations",
+"start_time": 38.89,
+"end_time": 39.39
+},
+{
+"text": "desk",
+"start_time": 39.39,
+"end_time": 39.83
+},
+{
+"text": "and",
+"start_time": 39.83,
+"end_time": 40.35
+},
+{
+"text": "merge",
+"start_time": 40.35,
+"end_time": 40.59
+},
+{
+"text": "R&D,",
+"start_time": 40.59,
+"end_time": 41.43
+},
+{
+"text": "IT,",
+"start_time": 41.75,
+"end_time": 42.01
+},
+{
+"text": "and",
+"start_time": 42.39,
+"end_time": 42.45
+},
+{
+"text": "PR",
+"start_time": 42.45,
+"end_time": 42.85
+},
+{
+"text": "into",
+"start_time": 42.85,
+"end_time": 43.15
+},
+{
+"text": "one",
+"start_time": 43.15,
+"end_time": 43.43
+},
+{
+"text": "growth",
+"start_time": 43.43,
+"end_time": 43.71
+},
+{
+"text": "engine",
+"start_time": 43.71,
+"end_time": 44.05
+},
+{
+"text": "powered",
+"start_time": 44.05,
+"end_time": 44.53
+},
+{
+"text": "by",
+"start_time": 44.53,
+"end_time": 44.79
+},
+{
+"text": "AI",
+"start_time": 44.79,
+"end_time": 45.15
+},
+{
+"text": "templates",
+"start_time": 45.15,
+"end_time": 45.61
+},
+{
+"text": "and",
+"start_time": 45.61,
+"end_time": 45.91
+},
+{
+"text": "no",
+"start_time": 45.91,
+"end_time": 46.09
+},
+{
+"text": "-code",
+"start_time": 46.09,
+"end_time": 46.35
+},
+{
+"text": "tools.",
+"start_time": 46.35,
+"end_time": 46.79
+},
+{
+"text": "Step",
+"start_time": 47.39,
+"end_time": 47.71
+},
+{
+"text": "three,",
+"start_time": 47.71,
+"end_time": 48.09
+},
+{
+"text": "deploy",
+"start_time": 48.61,
+"end_time": 48.83
+},
+{
+"text": "plug",
+"start_time": 48.83,
+"end_time": 49.15
+},
+{
+"text": "-and",
+"start_time": 49.15,
+"end_time": 49.31
+},
+{
+"text": "-play",
+"start_time": 49.31,
+"end_time": 49.53
+},
+{
+"text": "SOPs.",
+"start_time": 49.53,
+"end_time": 50.07
+},
+{
+"text": "Never",
+"start_time": 50.47,
+"end_time": 50.81
+},
+{
+"text": "ask",
+"start_time": 50.81,
+"end_time": 51.19
+},
+{
+"text": "unready",
+"start_time": 51.19,
+"end_time": 51.71
+},
+{
+"text": "members",
+"start_time": 51.71,
+"end_time": 52.03
+},
+{
+"text": "to",
+"start_time": 52.03,
+"end_time": 52.33
+},
+{
+"text": "invent",
+"start_time": 52.33,
+"end_time": 52.65
+},
+{
+"text": "work.",
+"start_time": 52.65,
+"end_time": 53.09
+},
+{
+"text": "Give",
+"start_time": 53.09,
+"end_time": 54.13
+},
+{
+"text": "them",
+"start_time": 54.13,
+"end_time": 54.29
+},
+{
+"text": "10",
+"start_time": 54.29,
+"end_time": 54.57
+},
+{
+"text": "-minute",
+"start_time": 54.57,
+"end_time": 54.81
+},
+{
+"text": "checklists",
+"start_time": 54.81,
+"end_time": 55.39
+},
+{
+"text": "for",
+"start_time": 55.39,
+"end_time": 55.61
+},
+{
+"text": "Canva",
+"start_time": 55.61,
+"end_time": 56.03
+},
+{
+"text": "posts,",
+"start_time": 56.03,
+"end_time": 56.41
+},
+{
+"text": "Google",
+"start_time": 56.83,
+"end_time": 57.09
+},
+{
+"text": "forms,",
+"start_time": 57.09,
+"end_time": 57.61
+},
+{
+"text": "and",
+"start_time": 57.81,
+"end_time": 57.87
+},
+{
+"text": "email",
+"start_time": 57.87,
+"end_time": 58.25
+},
+{
+"text": "outreach.",
+"start_time": 58.25,
+"end_time": 58.81
+},
+{
+"text": "Step",
+"start_time": 59.51,
+"end_time": 59.71
+},
+{
+"text": "four,",
+"start_time": 59.71,
+"end_time": 60.13
+},
+{
+"text": "run",
+"start_time": 60.61,
+"end_time": 60.85
+},
+{
+"text": "a",
+"start_time": 60.85,
+"end_time": 61.03
+},
+{
+"text": "14",
+"start_time": 61.03,
+"end_time": 61.37
+},
+{
+"text": "-day",
+"start_time": 61.37,
+"end_time": 61.79
+},
+{
+"text": "builder",
+"start_time": 61.79,
+"end_time": 62.15
+},
+{
+"text": "bootcamp.",
+"start_time": 62.15,
+"end_time": 62.71
+},
+{
+"text": "Test",
+"start_time": 63.21,
+"end_time": 63.49
+},
+{
+"text": "idle",
+"start_time": 63.49,
+"end_time": 63.89
+},
+{
+"text": "members",
+"start_time": 63.89,
+"end_time": 64.23
+},
+{
+"text": "with",
+"start_time": 64.23,
+"end_time": 64.57
+},
+{
+"text": "tiny,",
+"start_time": 64.57,
+"end_time": 64.99
+},
+{
+"text": "48",
+"start_time": 65.19,
+"end_time": 65.61
+},
+{
+"text": "-hour",
+"start_time": 65.61,
+"end_time": 66.07
+},
+{
+"text": "micro",
+"start_time": 66.07,
+"end_time": 66.45
+},
+{
+"text": "tasks.",
+"start_time": 66.45,
+"end_time": 66.89
+},
+{
+"text": "Whoever",
+"start_time": 67.59,
+"end_time": 67.81
+},
+{
+"text": "ships",
+"start_time": 67.81,
+"end_time": 68.17
+},
+{
+"text": "twice",
+"start_time": 68.17,
+"end_time": 68.53
+},
+{
+"text": "earns",
+"start_time": 68.53,
+"end_time": 68.97
+},
+{
+"text": "an",
+"start_time": 68.97,
+"end_time": 69.13
+},
+{
+"text": "executive",
+"start_time": 69.13,
+"end_time": 69.55
+},
+{
+"text": "badge.",
+"start_time": 69.55,
+"end_time": 70.03
+},
+{
+"text": "A",
+"start_time": 70.67,
+"end_time": 70.77
+},
+{
+"text": "crisis",
+"start_time": 70.77,
+"end_time": 71.11
+},
+{
+"text": "walkout",
+"start_time": 71.11,
+"end_time": 71.71
+},
+{
+"text": "strips",
+"start_time": 71.71,
+"end_time": 71.97
+},
+{
+"text": "away",
+"start_time": 71.97,
+"end_time": 72.31
+},
+{
+"text": "dead",
+"start_time": 72.31,
+"end_time": 72.63
+},
+{
+"text": "weight",
+"start_time": 72.63,
+"end_time": 72.97
+},
+{
+"text": "and",
+"start_time": 72.97,
+"end_time": 73.41
+},
+{
+"text": "lets",
+"start_time": 73.41,
+"end_time": 73.63
+},
+{
+"text": "you",
+"start_time": 73.63,
+"end_time": 73.81
+},
+{
+"text": "rebuild",
+"start_time": 73.81,
+"end_time": 74.19
+},
+{
+"text": "a",
+"start_time": 74.19,
+"end_time": 74.37
+},
+{
+"text": "lean,",
+"start_time": 74.37,
+"end_time": 74.73
+},
+{
+"text": "unstoppable",
+"start_time": 74.97,
+"end_time": 75.53
+},
+{
+"text": "club",
+"start_time": 75.53,
+"end_time": 76.13
+},
+{
+"text": "from",
+"start_time": 76.13,
+"end_time": 76.39
+},
+{
+"text": "scratch.",
+"start_time": 76.39,
+"end_time": 76.67
+}
+]
+}
+]
+}
