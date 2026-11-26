@@ -31,8 +31,11 @@ When authoring or modifying video projects in this workspace, follow these invar
 - **Never Write Outside**: Never place project assets, media, or generated outputs outside `E:\video try3`.
 - **Relative & Local Paths**: Reference all assets locally within the project structure (e.g., `assets/audio/...`, `assets/images/...`).
 
-## 6. Video Type Selection Checkpoint (Mandatory)
-- **Always Ask First**: Whenever the user assigns any video creation, editing, or animation task, NEVER assume the style. ALWAYS ask the user which Video Type they want to produce (referencing `E:\video try3\VIDEO_TYPES.md`, e.g., Type 1: GrowKaz Stickman 2.5D, Type 2, etc.) using `ask_question` or a direct prompt before creating or rendering scenes.
+## 6. Video Type & Voiceover Selection Checkpoint (Mandatory)
+- **Always Ask First (Video Type & Voiceover)**: Whenever the user assigns any video creation, editing, or animation task, NEVER assume the style or voiceover source. ALWAYS ask the user BEFORE writing scripts, generating audio, or creating/rendering scenes:
+  1. **Which Video Type** they want to produce (referencing `E:\video try3\VIDEO_TYPES.md`, e.g., Type 1: GrowKaz Stickman 2.5D, Type 2, Type 3, etc.).
+  2. **Voiceover Source**: Whether the user will provide/record the voiceover themselves OR whether I should generate the voiceover for them (e.g., via TTS).
+  Use `ask_question` or a direct prompt and wait for their answer before proceeding.
 - **Pipeline Isolation**: Keep each video type strictly isolated in its respective studio folder to protect Type 1 from any configuration or dependency conflicts.
 
 ## 7. Reel Studio & Advanced Motion Graphics Invariants (Type 5 / Shared Engine)
